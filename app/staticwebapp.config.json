@@ -1,5 +1,20 @@
 {
     "platform": {
         "apiRuntime": "node:20"
+    },
+    "routes": [
+        {
+            "route": "/*",
+            "allowedRoles": [ "authenticated" ]
+        }
+    ],
+    "navigationFallback": {
+        "rewrite": "/index.html"
+    },
+    "responseOverrides": {
+        "401": {
+            "redirect": "/.auth/login/aad",
+            "statusCode": 302
+        }
     }
 }
